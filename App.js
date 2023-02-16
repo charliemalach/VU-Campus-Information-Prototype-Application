@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Alert, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-
+import { useRoute } from '@react-navigation/native';
+import ValpoItem from './components/ValpoItem';
 
 export default function App() {
   const Stack = createStackNavigator();
+  
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Blank" component={BlankScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -25,13 +27,12 @@ function Login() {
   const customData = require('./db.json');
   const navigation = useNavigation();
 
-
   const handleLogin = async () => {
     const user = customData.users.find(user => user.username === username.toLowerCase() && user.password === password);
     if (user) {
       console.log("User logged in:", user);
       // handle successful login, e.g. navigate to home screen
-      navigation.navigate('Blank');
+      navigation.navigate('Home', { username: user.username });
       setUsername('');
       setPassword('');
       setIsLogin(true);
@@ -41,9 +42,9 @@ function Login() {
       // handle failed login, e.g. display error message to user
     }
   };
-
+  
   const handleRegister = async () => {
-    const user = customData.users.find(user => user.username === username);
+    const user = customData.users.find(user => user.username === username.toLowerCase());
     if (user) {
       console.error("User already exists");
       Alert.alert("ERROR: User already exists. You have not registered.");
@@ -95,10 +96,22 @@ function Login() {
   );
 }
 
-function BlankScreen() {
+function HomeScreen() {
+  const route = useRoute();
+  const customData = require('./db.json');
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const user = customData.users.find(user => user.username === route.params.username.toLowerCase());
+    setUsername(user.username);
+  }, []);
+
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 24 }}>You have successfully logged in!</Text>
+      <Text>Welcome,</Text>
+      <Text style={{ fontSize: 24 }}>{username}.</Text>
+      <ValpoItem></ValpoItem>
+
     </View>
   );
 }
