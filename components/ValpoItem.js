@@ -1,21 +1,33 @@
 import React from 'react';
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ValpoItem = () => {
+    const navigation = useNavigation();
+
     const DataVULink = () => {
         Linking.openURL('https://datavu.valpo.edu:8444/WebAdvisor/WebAdvisor');
       };
     const BBVULink = () => {
         Linking.openURL('https://blackboard.valpo.edu/');
     };
+    const Menu = () => {
+      navigation.navigate('Menu');
+  };
+
 
     return (
         <View style={styles.container}>
           <TouchableOpacity style={styles.button} onPress={DataVULink}>
             <Text style={styles.buttonText}>DataVU</Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.button} onPress={BBVULink}>
             <Text style={styles.buttonText}>BlackBoard</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={Menu}>
+            <Text style={styles.buttonText}>Menu</Text>
           </TouchableOpacity>
         </View>
       );
