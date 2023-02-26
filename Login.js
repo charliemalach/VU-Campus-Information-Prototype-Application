@@ -2,72 +2,63 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const URL = 'http://localhost:3000/';
-
+const API_URL = 'https://711a-2601-248-c200-3170-e5db-cd70-bcaf-bae9.ngrok.io/users/users'; //change this link for the user db 
 
 const Login = () => {
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('');
-const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
+  const navigation = useNavigation();
 
-
-const navigation = useNavigation();
-
-const handleLogin = async () => {
-  try {
-    const response = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    });
-    const data = await response.json();
-    if (response.ok) {
-      console.log("User logged in:", data);
-      // handle successful login, e.g. navigate to home screen
-      navigation.navigate('Home', { username: data.username });
-      setUsername('');
-      setPassword('');
-      setIsLogin(true);
-      StatusBar.setHidden(true);
-    } else {
-      console.error(data.message);
-      // handle failed login, e.g. display error message to user
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(`${API_URL}/users?username=${username}&password=${password}`);
+      const [user] = await response.json();
+      if (user) {
+        console.log("User logged in:", user);
+        // handle successful login, e.g. navigate to home screen
+        navigation.navigate('Home', { username: user.username });
+        setUsername('');
+        setPassword('');
+        setIsLogin(true);
+        StatusBar.setHidden(true);
+      } else {
+        console.error("Invalid credentials");
+        // handle failed login, e.g. display error message to user
+      }
+    } catch (error) {
+      console.error(error);
+      // handle error, e.g. display error message to user
     }
-  } catch (error) {
-    console.error(error);
-    // handle network error, e.g. display error message to user
-  }
-};
-
-
-const handleRegister = async () => {
-  try {
-    const response = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    });
-    const data = await response.json();
-    if (response.ok) {
-      console.log("User registered:", data);
-      Alert.alert("You have successfully registered");
-      // handle successful registration, e.g. display success message to user
-    } else {
-      console.error(data.message);
-      // handle failed registration, e.g. display error message to user
+  };
+  
+  const handleRegister = async () => {
+    try {
+      const response = await fetch(`${API_URL}/users?username=${username}`);
+      const [user] = await response.json();
+      if (user) {
+        console.error("User already exists");
+        Alert.alert("ERROR: User already exists. You have not registered.");
+        // handle failed registration, e.g. display error message to user
+      } else {
+        const newUser = { username, password };
+        const response = await fetch(`${API_URL}/users`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newUser)
+        });
+        const data = await response.json();
+        console.log("User registered:", data);
+        Alert.alert("You have successfully registered");
+        // handle successful registration, e.g. display success message to user
+      }
+    } catch (error) {
+      console.error(error);
+      // handle error, e.g. display error message to user
     }
-  } catch (error) {
-    console.error(error);
-    // handle network error, e.g. display error message to user
-  }
-};
-
-
-
+  };
 
 
   const styles = StyleSheet.create({
