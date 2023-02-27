@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const API_URL = 'https://711a-2601-248-c200-3170-e5db-cd70-bcaf-bae9.ngrok.io/users/users'; //change this link for the user db 
+const API_URL = 'https://ddb9-152-228-20-14.ngrok.io'; //change this link for the user db 
+let loggedUser = 'username';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const navigation = useNavigation();
+  
 
   const handleLogin = async () => {
     try {
-      const response = await fetch(`${API_URL}/users?username=${username}&password=${password}`);
+      const response = await fetch(`${API_URL}/users?username=${username}&password=${password}`, {method: "GET"});
       const [user] = await response.json();
       if (user) {
         console.log("User logged in:", user);
+        loggedUser = user.username;
         // handle successful login, e.g. navigate to home screen
-        navigation.navigate('Home', { username: user.username });
+        navigation.navigate('Home', { username: loggedUser });
+        
+        console.log(loggedUser);
         setUsername('');
         setPassword('');
         setIsLogin(true);
         StatusBar.setHidden(true);
+        return loggedUser;
       } else {
         console.error("Invalid credentials");
         // handle failed login, e.g. display error message to user
@@ -30,6 +38,7 @@ const Login = () => {
       console.error(error);
       // handle error, e.g. display error message to user
     }
+    return loggedUser;
   };
   
   const handleRegister = async () => {
@@ -41,15 +50,23 @@ const Login = () => {
         Alert.alert("ERROR: User already exists. You have not registered.");
         // handle failed registration, e.g. display error message to user
       } else {
-        const newUser = { username, password };
+        // const newUser = { username, password };
         const response = await fetch(`${API_URL}/users`, {
           method: 'POST',
           headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(newUser)
+          body: JSON.stringify(
+            {
+              id: 0,
+              name: name,
+              username: username,
+              password: password
+            }
+          )
         });
-        const data = await response.json();
+        const data = await response.text();
         console.log("User registered:", data);
         Alert.alert("You have successfully registered");
         // handle successful registration, e.g. display success message to user
@@ -103,7 +120,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-    
+  
       <Image
         style={styles.tinyLogo}
         source={require('./assets/shield.png')}
@@ -111,10 +128,21 @@ const Login = () => {
 
       <Text style={styles.title}>{isLogin ? 'Login' : 'Register'}</Text>
 
+      { !isLogin &&
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          value={name}
+          secureTextEntry={false}
+          onChangeText={setName}
+        />
+      }
+
       <TextInput
         style={styles.input}
         placeholder="Username"
         value={username}
+        secureTextEntry={false}
         onChangeText={setUsername}
       />
 
@@ -136,13 +164,8 @@ const Login = () => {
         </Text>
       </TouchableOpacity>
     </View>
-
-
-    
-
   );
-
-  
 }
 
+export {loggedUser};
 export default Login

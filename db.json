@@ -1,16 +1,28 @@
 {
-    "users": [
-        {
-            "id": "1",
-            "name": "Charlie Malachinski",
-            "username": "cmalach1",
-            "password": "cmalach1"
-        },
-        {
-            "id": "2",
-            "name": "John Doe",
-            "username": "jdoe1",
-            "password": "jdoe1"
-        }
-    ]
-} 
+  "users": [
+    {
+      "id": "1",
+      "name": "Charlie Malachinski",
+      "username": "cmalach1",
+      "password": "cmalach1"
+    },
+    {
+      "id": "2",
+      "name": "John Doe",
+      "username": "jdoe1",
+      "password": "jdoe1"
+    },
+    {
+      "id": "3",
+      "name": "Sam Smith",
+      "username": "cadengem",
+      "password": "cadengem"
+    },
+    {
+      "id": "4",
+      "name": "Sam Smith",
+      "username": "cadenge",
+      "password": "cadengem"
+    }
+  ]
+}
