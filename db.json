@@ -13,16 +13,10 @@
       "password": "jdoe1"
     },
     {
-      "id": "3",
-      "name": "Sam Smith",
-      "username": "cadengem",
-      "password": "cadengem"
-    },
-    {
-      "id": "4",
-      "name": "Sam Smith",
-      "username": "cadenge",
-      "password": "cadengem"
+      "id": 3,
+      "name": "Chud",
+      "username": "Chud",
+      "password": "chud"
     }
   ]
 }

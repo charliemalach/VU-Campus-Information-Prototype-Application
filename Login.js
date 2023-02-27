@@ -12,6 +12,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const navigation = useNavigation();
+  const [nextId, setNextId] = useState(true);
   
 
   const handleLogin = async () => {
@@ -51,6 +52,7 @@ const Login = () => {
         // handle failed registration, e.g. display error message to user
       } else {
         // const newUser = { username, password };
+        const newUser = { id: nextId, name, username, password };
         const response = await fetch(`${API_URL}/users`, {
           method: 'POST',
           headers: {
@@ -59,7 +61,7 @@ const Login = () => {
           },
           body: JSON.stringify(
             {
-              id: 0,
+              id: nextId,
               name: name,
               username: username,
               password: password
@@ -68,6 +70,7 @@ const Login = () => {
         });
         const data = await response.text();
         console.log("User registered:", data);
+        setNextId(nextId + 1); // increment the nextId for the next user
         Alert.alert("You have successfully registered");
         // handle successful registration, e.g. display success message to user
       }
