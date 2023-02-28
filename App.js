@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './Login';
 import Home from './Home';
 import Menu from './Menu';
+import Resources from './Resources';
+import VUPD from './VUPD';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +18,8 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Resources" component={Resources} />
+        <Stack.Screen name="VUPD" component={VUPD} />
       </Stack.Navigator>
     </NavigationContainer>
   );
