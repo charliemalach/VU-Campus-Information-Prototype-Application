@@ -12,7 +12,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const navigation = useNavigation();
-  const [nextId, setNextId] = useState(true);
+  const [nextId, setNextId] = useState(1);
   
 
   const handleLogin = async () => {
