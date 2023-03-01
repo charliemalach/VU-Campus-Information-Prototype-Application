@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import VUPDItem from './components/MenuItem.js';
+import VUPDItem from './components/VUPDItem';
 
 
 

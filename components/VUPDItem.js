@@ -1,18 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
+
+
 
 const VUPDItem = () => {
-    const navigation = useNavigation();
 
-    const openPDF = async () => {
-        const url = 'https://www.charliemalachinski.com/Valpo_Menu.pdf'; // Replace with your PDF URL
-        await Linking.openURL(url);
+    const callVUPD = async () => {
+        const phoneNumber = '2192636758'; //this is my phone number. change this to make it call VUPD.
+        Linking.openURL(`tel:${phoneNumber}`);
     };
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={openPDF}>
+            <TouchableOpacity style={styles.button} onPress={callVUPD}>
                 <Text style={styles.buttonText}>Call VUPD</Text>
             </TouchableOpacity>
         </View>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         maxWidth: '70%',
     },
     button: {
-        backgroundColor: '#613318',
+        backgroundColor: 'red',
         padding: 10,
         borderRadius: 5,
         marginVertical: 5,

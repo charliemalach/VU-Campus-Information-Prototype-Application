@@ -5,16 +5,34 @@ import { useNavigation } from '@react-navigation/native';
 const ResourceItem = () => {
     const navigation = useNavigation();
 
+
     const openPDF = async () => {
         const url = 'https://www.charliemalachinski.com/Valpo_Menu.pdf'; // Replace with your PDF URL
         await Linking.openURL(url);
-    };
+      };
+    
+      const test = () => {
+        navigation.navigate('Counseling');
+      };
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={openPDF}>
-                <Text style={styles.buttonText}>Menu</Text>
+
+            <TouchableOpacity style={styles.button} onPress={test}>
+                <Text style={styles.buttonText}>Counseling Center</Text>
             </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.button} onPress={openPDF}>
+                <Text style={styles.buttonText}>Health Center</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button} onPress={openPDF}>
+                <Text style={styles.buttonText}>Student Senate</Text>
+            </TouchableOpacity>
+
+
+
+
         </View>
     );
 };

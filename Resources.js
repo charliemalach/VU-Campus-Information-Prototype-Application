@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import ValpoItem from './components/ValpoItem.js';
 import ResourceItem from './components/ResourceItem';
 
 

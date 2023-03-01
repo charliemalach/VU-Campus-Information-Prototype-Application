@@ -8,6 +8,7 @@ import Home from './Home';
 import Menu from './Menu';
 import Resources from './Resources';
 import VUPD from './VUPD';
+import Counseling from './components/Counseling';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,9 @@ function App() {
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Resources" component={Resources} />
         <Stack.Screen name="VUPD" component={VUPD} />
+        <Stack.Screen name="Counseling" component={Counseling} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
