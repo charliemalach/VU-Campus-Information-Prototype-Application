@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 import Login from './Login';
+import EditProfileScreen from './Edit';
 import Home from './Home';
 import Menu from './Menu';
 import Resources from './Resources';
@@ -19,6 +20,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Edit" component={EditProfileScreen} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Resources" component={Resources} />

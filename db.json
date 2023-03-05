@@ -4,31 +4,36 @@
       "id": "1",
       "name": "Charlie Malachinski",
       "username": "cmalach1",
-      "password": "cmalach1"
+      "password": "cmalach1",
+      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
     },
     {
       "id": "2",
       "name": "John Doe",
       "username": "jdoe1",
-      "password": "jdoe1"
+      "password": "jdoe1",
+      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
     },
     {
       "id": 3,
       "name": "Chud",
       "username": "Chud",
-      "password": "chud"
+      "password": "chud",
+      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
     },
     {
       "id": 4,
       "name": "Greg",
       "username": "Greg",
-      "password": "greg"
+      "password": "greg",
+      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
     },
     {
       "id": 5,
       "name": "1",
       "username": "1",
-      "password": "1"
+      "password": "1",
+      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
     }
   ]
 }
