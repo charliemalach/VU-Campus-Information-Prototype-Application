@@ -9,9 +9,11 @@ import Menu from './Menu';
 import Resources from './Resources';
 import VUPD from './VUPD';
 import Counseling from './components/Counseling';
+import HealthCenter from './components/HealthCenter';
+import StudentSenate from './components/StudentSenate';
+
 
 const Stack = createStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>
@@ -22,8 +24,8 @@ function App() {
         <Stack.Screen name="Resources" component={Resources} />
         <Stack.Screen name="VUPD" component={VUPD} />
         <Stack.Screen name="Counseling" component={Counseling} />
-
-
+        <Stack.Screen name="HealthCenter" component={HealthCenter} />
+        <Stack.Screen name="StudentSenate" component={StudentSenate} />
       </Stack.Navigator>
     </NavigationContainer>
   );

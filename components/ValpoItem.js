@@ -27,7 +27,6 @@ const ValpoItem = () => {
       navigation.navigate('VUPD');
     };
 
-
     // the view on the screen for the user main menu 
     return (
         <View style={styles.container}>
@@ -41,7 +40,7 @@ const ValpoItem = () => {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={Menu}>
-            <Text style={styles.buttonText}>Menu</Text>
+            <Text style={styles.buttonText}>Founders Menu</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={ValpoNav}>
@@ -55,14 +54,7 @@ const ValpoItem = () => {
           <TouchableOpacity style={styles.button_special} onPress={VUPD}>
             <Text style={styles.buttonText}>Call VUPD</Text>
           </TouchableOpacity>
-
-
-
         </View>
-
-        
-
-
       );
     };
     
@@ -75,28 +67,34 @@ const ValpoItem = () => {
         alignItems: 'center',
         maxWidth: '70%',
       },
-      button: {
-        backgroundColor: '#613318',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
-        maxWidth: '70%',
-      },
-
-      button_special: {
-        backgroundColor: '#ffcc00',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 55,
-        maxWidth: '70%',
-      },
-
       buttonText: {
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
       },
-
+      button: {
+        flex: 1,
+        backgroundColor: '#613318',
+        padding: 10,
+        borderRadius: 5,
+        marginVertical: 5,
+        maxWidth: 200,
+        width: 200,
+        height: 45,
+        maxHeight: 45,
+      },
+      button_special: {
+        flex: 1,
+        backgroundColor: '#ffcc00',
+        padding: 10,
+        borderRadius: 5,
+        marginVertical: 55,
+        maxWidth: 200,
+        width: 200,
+        height: 45,
+        maxHeight: 45,
+      },
     });
   
   export default ValpoItem;

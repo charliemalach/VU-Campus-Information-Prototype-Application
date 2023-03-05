@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 const MenuItem = () => {
-    const navigation = useNavigation();
 
     const openPDF = async () => {
         const url = 'https://www.charliemalachinski.com/Valpo_Menu.pdf'; // Replace with your PDF URL
@@ -27,18 +25,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         maxWidth: '70%',
     },
-    button: {
-        backgroundColor: '#613318',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
-        maxWidth: '70%',
-    },
     buttonText: {
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
-    },
+        textAlign: 'center',
+      },
+      button: {
+        flex: 1,
+        backgroundColor: '#613318',
+        padding: 10,
+        borderRadius: 5,
+        marginVertical: 5,
+        maxWidth: 200,
+        width: 200,
+        height: 45,
+        maxHeight: 45,
+      },
 });
 
 export default MenuItem;

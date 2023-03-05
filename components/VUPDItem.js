@@ -28,18 +28,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         maxWidth: '70%',
     },
-    button: {
-        backgroundColor: 'red',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
-        maxWidth: '70%',
-    },
     buttonText: {
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold',
-    },
+        textAlign: 'center',
+      },
+      button: {
+        flex: 1,
+        backgroundColor: 'red',
+        padding: 10,
+        borderRadius: 5,
+        marginVertical: 5,
+        maxWidth: 200,
+        width: 200,
+        height: 45,
+        maxHeight: 45,
+      },
 });
 
 export default VUPDItem;

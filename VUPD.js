@@ -8,7 +8,8 @@ import VUPDItem from './components/VUPDItem';
 function VUPD() {
     return (
     <View style={{ flex: 1, backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'center' }}>
-      <Text>USE THIS BUTTON FOR EMERGENCIES ONLY!</Text>
+      <Text>This button will call VUPD directly.</Text>
+      <Text>USE THIS BUTTON FOR EMERGENCIES ONLY! </Text>
       <VUPDItem></VUPDItem>
     </View>
     );

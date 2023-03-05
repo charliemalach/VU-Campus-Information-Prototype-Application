@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const API_URL = 'https://17ac-152-228-20-14.ngrok.io'; //change this link for the user db 
+
+const API_URL = 'https://d681-2601-248-c200-3170-599d-c89d-e5a1-d6ba.ngrok.io'; //change this link for the user db 
 let loggedUser = 'username';
 
 
