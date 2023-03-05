@@ -43,13 +43,15 @@ const ValpoItem = () => {
             <Text style={styles.buttonText}>Founders Menu</Text>
           </TouchableOpacity>
 
+          <TouchableOpacity style={styles.button} onPress={Resources}>
+            <Text style={styles.buttonText}>Student Resources</Text>
+          </TouchableOpacity>
+
           <TouchableOpacity style={styles.button} onPress={ValpoNav}>
             <Text style={styles.buttonText}>ValpoNav</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={Resources}>
-            <Text style={styles.buttonText}>Contact Resoruces</Text>
-          </TouchableOpacity>
+          
 
           <TouchableOpacity style={styles.button_special} onPress={VUPD}>
             <Text style={styles.buttonText}>Call VUPD</Text>

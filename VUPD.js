@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import React from 'react';
+import { View, Text} from 'react-native';
 import VUPDItem from './components/VUPDItem';
-
-
 
 function VUPD() {
     return (
@@ -12,9 +9,6 @@ function VUPD() {
       <Text>USE THIS BUTTON FOR EMERGENCIES ONLY! </Text>
       <VUPDItem></VUPDItem>
     </View>
-    );
-
-    
+    ); 
 }
-
 export default VUPD;
