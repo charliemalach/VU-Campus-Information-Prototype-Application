@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {loggedUser} from './Login.js'
+import {imageUser} from './Login.js'
 
-const API_URL = 'https://d681-2601-248-c200-3170-599d-c89d-e5a1-d6ba.ngrok.io'; //change this link for the user db 
+const API_URL = 'http://ade3-216-176-135-53.ngrok.io'; //change this link for the user db 
 
 const EditProfileScreen = () => {
   const [username, setUsername] = useState('');
@@ -16,9 +17,10 @@ const EditProfileScreen = () => {
       aspect: [4, 3],
       quality: 1,
     });
-
+    console.log(JSON.stringify(result));
     if (!result.cancelled) {
       setProfilePicture(result.uri);
+      console.log(result.uri)
       updateProfilePicture({loggedUser}, result.uri)
     }
   };
@@ -49,7 +51,7 @@ const EditProfileScreen = () => {
           <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
         ) : (
           <View style={styles.profilePicturePlaceholder}>
-            <Text style={styles.profilePicturePlaceholderText}>Upload a Profile Picture</Text>
+            <Text style={styles.profilePicturePlaceholderText}>Select Profile Picture</Text>
           </View>
         )}
       </TouchableOpacity>
