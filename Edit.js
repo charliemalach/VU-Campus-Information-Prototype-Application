@@ -3,8 +3,9 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Platform } 
 import * as ImagePicker from 'expo-image-picker';
 import {loggedUser} from './Login.js'
 import {imageUser} from './Login.js'
+import {API_URL} from './Login.js'
 
-const API_URL = 'http://ade3-216-176-135-53.ngrok.io'; //change this link for the user db 
+
 
 const EditProfileScreen = () => {
   const [username, setUsername] = useState('');
@@ -27,6 +28,7 @@ const EditProfileScreen = () => {
 
   const updateProfilePicture = async ({loggedUser}, imageUrl) => {
     username = {loggedUser};
+    console.log("This is the imageURL", imageUrl)
     try {
       const response = await fetch(`${API_URL}/users?username=${username}`, {
         method: 'PATCH',

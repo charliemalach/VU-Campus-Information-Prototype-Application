@@ -8,6 +8,8 @@ const MenuItem = () => {
         await Linking.openURL(url);
     };
 
+    
+
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.button} onPress={openPDF}>

@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, Stat
 import { useNavigation } from '@react-navigation/native';
 
 
-const API_URL = 'http://ade3-216-176-135-53.ngrok.io'; //change this link for the user db 
+const API_URL = 'https://2381-152-228-20-39.ngrok.io'; //change this link for the user db 
 let loggedUser = 'username';
 let imageUser = 'https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg';
 
@@ -173,6 +173,7 @@ const Login = () => {
   );
 }
 
+export {API_URL};
 export {loggedUser};
 export {imageUser};
 export default Login
