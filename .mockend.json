@@ -1,102 +1,76 @@
-[
-	{
-		"body": "You can use your own data or have random values generated for you.",
-		"category": "three",
-		"cover": "https://picsum.photos/seed/31611/1920/270",
-		"createdAt": "2012-12-23T16:16:39Z",
-		"id": 1,
-		"isDraft": true,
-		"title": "First title",
-		"views": 403
-	},
-	{
-		"body": "The rest of the posts will have random values",
-		"category": "three",
-		"cover": "https://picsum.photos/seed/32612/1920/270",
-		"createdAt": "2017-05-10T03:10:51Z",
-		"id": 2,
-		"isDraft": false,
-		"title": "Second title",
-		"views": 362
-	},
-	{
-		"body": "Unde veniam.",
-		"category": "one",
-		"cover": "https://picsum.photos/seed/72961/1920/270",
-		"createdAt": "2014-05-28T07:25:05Z",
-		"id": 3,
-		"isDraft": true,
-		"title": "rerum magnam",
-		"views": 251
-	},
-	{
-		"body": "Debitis et neque facilis magnam.",
-		"category": "one",
-		"cover": "https://picsum.photos/seed/39274/1920/270",
-		"createdAt": "2019-03-02T06:22:28Z",
-		"id": 4,
-		"isDraft": false,
-		"title": "impedit ullam a",
-		"views": 605
-	},
-	{
-		"body": "Error nisi deserunt consectetur ea a.",
-		"category": "one",
-		"cover": "https://picsum.photos/seed/83949/1920/270",
-		"createdAt": "2017-01-07T15:39:34Z",
-		"id": 5,
-		"isDraft": false,
-		"title": "consequuntur qui",
-		"views": 570
-	},
-	{
-		"body": "Mollitia doloribus a reprehenderit vitae, incidunt incidunt.",
-		"category": "two",
-		"cover": "https://picsum.photos/seed/23026/1920/270",
-		"createdAt": "2013-08-29T00:02:05Z",
-		"id": 6,
-		"isDraft": false,
-		"title": "ducimus a",
-		"views": 880
-	},
-	{
-		"body": "Reprehenderit et, asperiores sed reprehenderit nisi, architecto a reprehenderit ipsa.",
-		"category": "two",
-		"cover": "https://picsum.photos/seed/41794/1920/270",
-		"createdAt": "2010-11-05T05:10:24Z",
-		"id": 7,
-		"isDraft": true,
-		"title": "quae rem",
-		"views": 757
-	},
-	{
-		"body": "Perspiciatis minima sit.",
-		"category": "one",
-		"cover": "https://picsum.photos/seed/84257/1920/270",
-		"createdAt": "2013-06-15T03:00:05Z",
-		"id": 8,
-		"isDraft": true,
-		"title": "eveniet",
-		"views": 626
-	},
-	{
-		"body": "Dolore perferendis deleniti ab, in molestiae quia, autem perspiciatis aliquam corrupti.",
-		"category": "two",
-		"cover": "https://picsum.photos/seed/66830/1920/270",
-		"createdAt": "2011-08-23T15:42:59Z",
-		"id": 9,
-		"isDraft": true,
-		"title": "vel non",
-		"views": 270
-	},
-	{
-		"body": "Voluptatem reprehenderit cumque laborum, tempora magnam ea quo cum.",
-		"category": "three",
-		"cover": "https://picsum.photos/seed/01015/1920/270",
-		"createdAt": "2014-04-01T08:16:09Z",
-		"id": 10,
-		"isDraft": false,
-		"title": "voluptatibus eum",
-		"views": 262
-	}
-]
+{
+    "Post": {
+      "_": {
+        "items": 10,
+        "data": [
+          {
+            "title": "First title",
+            "body": "You can use your own data or have random values generated for you."
+          },
+          {
+            "title": "Second title",
+            "body": "The rest of the posts will have random values"
+          }
+        ]
+      },
+      "cover": {
+        "regexp": "https://picsum\\.photos/seed/[0-9]{5}/1920/270"
+      },
+      "title": {
+        "loremWords": {
+          "minLength": 5,
+          "maxLength": 20
+        }
+      },
+      "body": {
+        "loremParagraphs": {
+          "minLength": 10,
+          "maxLength": 100
+        }
+      },
+      "category": {
+        "string": ["one", "two", "three"]
+      },
+      "isDraft": {
+        "boolean": {}
+      },
+      "views": {
+        "int": {
+          "min": 0,
+          "max": 1000
+        }
+      },
+      "createdAt": {
+        "dateTime": {
+          "min": "2010-01-01T00:00:00Z",
+          "max": "2020-12-31T23:59:59Z"
+        }
+      },
+      "comments": {
+        "hasMany": "Comment"
+      }
+    },
+    "Comment": {
+      "_": {
+        "items": 25
+      },
+      "email": {
+        "regexp": "[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}"
+      },
+      "body": {
+        "loremParagraphs": {
+          "minLength": 10,
+          "maxLength": 100
+        }
+      },
+      "createdAt": {
+        "dateTime": {
+          "min": "2010-01-01T00:00:00Z",
+          "max": "2020-12-31T23:59:59Z"
+        }
+      },
+      "post": {
+        "belongsTo": "Post"
+      }
+    }
+  }
