@@ -3,36 +3,47 @@ import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, Stat
 import { useNavigation } from '@react-navigation/native';
 
 
-const API_URL = 'https://2381-152-228-20-39.ngrok.io'; //change this link for the user db 
-let loggedUser = 'username';
-let imageUser = 'https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg';
+const API_URL = 'https://d773-152-228-20-39.ngrok.io'; //change this link for the user db 
+const defaultImage = "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg";
 
+let loggedName = 'name';
+let loggedUser = 'username';
+let loggedImage = defaultImage;
+let loggedEmail = 'email';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [image, setImage] = useState('');
+  const [nextId, setNextId] = useState(1);
   const [isLogin, setIsLogin] = useState(true);
   const navigation = useNavigation();
-  const [nextId, setNextId] = useState(1);
   
-
   const handleLogin = async () => {
     try {
       const response = await fetch(`${API_URL}/users?username=${username}&password=${password}`, {method: "GET"});
       const [user] = await response.json();
       if (user) {
         console.log("User logged in:", user);
+        loggedName = user.name;
         loggedUser = user.username;
+        loggedImage = user.image;
+        loggedEmail = user.email;
         // handle successful login, e.g. navigate to home screen
         navigation.navigate('Home', { username: loggedUser });
         
         console.log(loggedUser);
+        setName('');
         setUsername('');
         setPassword('');
+        setImage('');
+        setEmail('');
         setIsLogin(true);
+        
         StatusBar.setHidden(true);
-        return loggedUser;
+        return loggedUser, loggedImage, loggedEmail, loggedName;
       } else {
         console.error("Invalid credentials");
         // handle failed login, e.g. display error message to user
@@ -53,27 +64,20 @@ const Login = () => {
         Alert.alert("ERROR: User already exists. You have not registered.");
         // handle failed registration, e.g. display error message to user
       } else {
-        // const newUser = { username, password };
-        // const newUser = { id: nextId, name, username, password };
+        setImage(defaultImage)
+        const newUser = { id: nextId, name, username, password, image, email }; //for some reason messing with the space after email allows post requests ..?
         const response = await fetch(`${API_URL}/users`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(
-            {
-              id: nextId,
-              name: name,
-              username: username,
-              password: password,
-              profilePicture: 'https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg',
-            }
-          )
+          body: JSON.stringify(newUser)
         });
         const data = await response.text();
         console.log("User registered:", data);
         setNextId(nextId + 1); // increment the nextId for the next user
+        setImage(defaultImage)
         Alert.alert("You have successfully registered");
         // handle successful registration, e.g. display success message to user
       }
@@ -144,6 +148,16 @@ const Login = () => {
         />
       }
 
+      { !isLogin &&
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          secureTextEntry={false}
+          onChangeText={setEmail}
+        />
+      }
+
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -174,6 +188,8 @@ const Login = () => {
 }
 
 export {API_URL};
+export {loggedName};
 export {loggedUser};
-export {imageUser};
+export {loggedImage};
+export {loggedEmail};
 export default Login

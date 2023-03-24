@@ -5,49 +5,16 @@
       "name": "Charlie Malachinski",
       "username": "cmalach1",
       "password": "cmalach1",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
+      "image": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg",
+      "email": "charlie.malachinski@valpo.edu"
     },
     {
       "id": "2",
-      "name": "John Doe",
-      "username": "jdoe1",
-      "password": "jdoe1",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Chud",
-      "username": "Chud",
-      "password": "chud",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Greg",
-      "username": "Greg",
-      "password": "greg",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
-    },
-    {
-      "id": 5,
       "name": "1",
       "username": "1",
       "password": "1",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
-    },
-    {
-      "id": 6,
-      "name": "2",
-      "username": "2",
-      "password": "2",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
-    },
-    {
-      "id": 7,
-      "name": "3",
-      "username": "3",
-      "password": "3",
-      "profilePicture": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg"
+      "image": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg",
+      "email": "test.test@valpo.edu"
     }
   ]
 }

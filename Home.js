@@ -1,4 +1,4 @@
-import React, { useState, StyleSheet, TouchableOpacity  } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import ValpoItem from './components/ValpoItem.js';
 import {loggedUser} from './Login.js'

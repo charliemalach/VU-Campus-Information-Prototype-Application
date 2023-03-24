@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import {loggedUser} from './Login.js'
-import {imageUser} from './Login.js'
-import {API_URL} from './Login.js'
-
-
+import { loggedUser } from './Login.js';
+import { loggedName } from './Login.js';
+import { loggedEmail } from './Login.js';
+import { loggedImage } from './Login.js';
+import { API_URL } from './Login.js';
+import * as FileSystem from 'expo-file-system';
 
 const EditProfileScreen = () => {
-  const [username, setUsername] = useState('');
-  const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePicture, setProfilePicture] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need media library permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -17,26 +30,50 @@ const EditProfileScreen = () => {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true,
     });
     console.log(JSON.stringify(result));
     if (!result.cancelled) {
-      setProfilePicture(result.uri);
-      console.log(result.uri)
-      updateProfilePicture({loggedUser}, result.uri)
+      const localUri = await saveLocalImage(result.uri);
+      setProfilePicture(localUri);
+      uploadProfilePicture(loggedUser, result.base64);
     }
   };
 
-  const updateProfilePicture = async ({loggedUser}, imageUrl) => {
-    username = {loggedUser};
-    console.log("This is the imageURL", imageUrl)
+  const uploadToStorage = async (username, blob) => {
+    const response = await fetch(`${API_URL}/users?username=${username}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        image: blob,
+      }),
+    });
+    const result = await response.json();
+    return result.url;
+  };
+
+  const saveLocalImage = async (uri) => {
+    const filename = uri.split('/').pop();
+    const directory = FileSystem.documentDirectory + 'images/';
+    await FileSystem.makeDirectoryAsync(directory, { intermediates: true });
+    const localUri = directory + filename;
+    await FileSystem.copyAsync({
+      from: uri,
+      to: localUri,
+    });
+    return localUri;
+  };
+
+  const uploadProfilePicture = async (username, imageData) => {
     try {
+      const blob = await fetch(`data:image/jpeg;base64,${imageData}`).then(res => res.blob());
+      const imageUrl = await uploadToStorage(blob);
       const response = await fetch(`${API_URL}/users?username=${username}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          profilePicture: imageUrl
+          image: imageUrl,
         })
       });
       const result = await response.json();
@@ -53,16 +90,27 @@ const EditProfileScreen = () => {
           <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
         ) : (
           <View style={styles.profilePicturePlaceholder}>
-            <Text style={styles.profilePicturePlaceholderText}>Select Profile Picture</Text>
+            <Image source={{ uri: loggedImage }} style={styles.profilePicture} />
           </View>
         )}
       </TouchableOpacity>
-      <TextInput
-        placeholder= {loggedUser}
-        style={styles.input}
-        value={username}
-        onChangeText={setUsername}
+
+      <Text style={styles.notinput}>{loggedUser}</Text>
+
+      <TextInput 
+      placeholder={loggedName}
+      style={styles.input}
+      value={name}
+      onTextChange={setName}
       />
+
+      <TextInput
+        placeholder={loggedEmail}
+        style={styles.input}
+        value={email}
+        onChangeText={setEmail}
+      />
+
       <TouchableOpacity style={styles.button} onPress={() => console.log('Save Profile')}>
         <Text style={styles.buttonText}>Save Profile</Text>
       </TouchableOpacity>
@@ -77,6 +125,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#fff',
+  },
+  notinput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    width: '100%',
+    marginVertical: 10,
+    fontSize: 18,
   },
   input: {
     borderWidth: 1,
