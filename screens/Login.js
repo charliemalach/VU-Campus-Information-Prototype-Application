@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Alert, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Alert, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
