@@ -1,5 +1,0 @@
-TODO: 
-
-- fix the menu (change from PDF to PNG) 
-- fix the images (change from user selected to library)
-- 

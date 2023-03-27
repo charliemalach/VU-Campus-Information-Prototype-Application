@@ -7,6 +7,7 @@ import { loggedEmail } from './Login.js';
 import { loggedImage } from './Login.js';
 import { API_URL } from './Login.js';
 import * as FileSystem from 'expo-file-system';
+import styles from './styles';
 
 const EditProfileScreen = () => {
   const [profilePicture, setProfilePicture] = useState('');
@@ -99,82 +100,23 @@ const EditProfileScreen = () => {
 
       <TextInput 
       placeholder={loggedName}
-      style={styles.input}
+      style={styles.change}
       value={name}
       onTextChange={setName}
       />
 
       <TextInput
         placeholder={loggedEmail}
-        style={styles.input}
+        style={styles.change}
         value={email}
         onChangeText={setEmail}
       />
 
-      <TouchableOpacity style={styles.button} onPress={() => console.log('Save Profile')}>
-        <Text style={styles.buttonText}>Save Profile</Text>
+      <TouchableOpacity style={styles.savebutton} onPress={() => console.log('Save Profile')}>
+        <Text style={styles.savebuttonText}>Save Profile</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  notinput: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    width: '100%',
-    marginVertical: 10,
-    fontSize: 18,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    width: '100%',
-    marginVertical: 10,
-    fontSize: 18,
-  },
-  button: {
-    backgroundColor: '#613318',
-    padding: 10,
-    borderRadius: 5,
-    marginVertical: 10,
-    minWidth: '50%',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  profilePicture: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-  },
-  profilePicturePlaceholder: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    backgroundColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  profilePicturePlaceholderText: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-});
 
 export default EditProfileScreen;

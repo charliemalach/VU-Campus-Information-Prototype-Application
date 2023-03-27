@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text} from 'react-native';
-import VUPDItem from './components/VUPDItem';
+import VUPDItem from '../components/VUPDItem';
 
 function VUPD() {
     return (

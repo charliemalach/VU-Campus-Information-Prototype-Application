@@ -3,12 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-import Login from './Login';
-import EditProfileScreen from './Edit';
-import Home from './Home';
-import Menu from './Menu';
-import Resources from './Resources';
-import VUPD from './VUPD';
+import Login from './screens/Login';
+import EditProfileScreen from './screens/Edit';
+import Home from './screens/Home';
+import Menu from './screens/Menu';
+import Resources from './screens/Resources';
+import VUPD from './screens/VUPD';
 import Counseling from './components/Counseling';
 import HealthCenter from './components/HealthCenter';
 import StudentSenate from './components/StudentSenate';

@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import ValpoItem from './components/ValpoItem.js';
+import ValpoItem from '../components/ValpoItem.js';
 import {loggedUser} from './Login.js'
 import { useNavigation } from '@react-navigation/native';
-
-
 
 
 function Home() {

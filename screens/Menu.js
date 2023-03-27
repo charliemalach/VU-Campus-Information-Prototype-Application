@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRoute } from '@react-navigation/native';
-import MenuItem from './components/MenuItem.js';
+import React from 'react';
+import { View, Text } from 'react-native';
+import MenuItem from '../components/MenuItem.js';
 
 
 

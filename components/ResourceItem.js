@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles.js';
 
 const ResourceItem = () => {
     const navigation = useNavigation();
@@ -35,32 +36,5 @@ const ResourceItem = () => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        maxWidth: '70%',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-      },
-      button: {
-        flex: 1,
-        backgroundColor: '#613318',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
-        maxWidth: 200,
-        width: 200,
-        height: 45,
-        maxHeight: 45,
-      },
-});
 
 export default ResourceItem;

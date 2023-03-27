@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, Alert, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Alert, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
 
-const API_URL = 'https://d773-152-228-20-39.ngrok.io'; //change this link for the user db 
+const API_URL = 'https://bd25-152-228-20-39.ngrok.io'; //change this link for the user db 
 const defaultImage = "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg";
 
 let loggedName = 'name';
@@ -29,7 +30,7 @@ const Login = () => {
         console.log("User logged in:", user);
         loggedName = user.name;
         loggedUser = user.username;
-        loggedImage = user.image;
+        loggedImage = defaultImage;
         loggedEmail = user.email;
         // handle successful login, e.g. navigate to home screen
         navigation.navigate('Home', { username: loggedUser });
@@ -87,53 +88,12 @@ const Login = () => {
     }
   };
 
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#ffcc00',
-    },
-    title: {
-      fontSize: 24,
-      marginBottom: 24,
-    },
-    input: {
-      width: '80%',
-      padding: 12,
-      marginBottom: 16,
-      backgroundColor: '#eee',
-      borderRadius: 4,
-    },
-    button: {
-      width: '80%',
-      padding: 12,
-      backgroundColor: '#613318',
-      borderRadius: 4,
-      alignItems: 'center',
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 18,
-    },
-    switchText: {
-      marginTop: 24,
-      color: '#4287f5',
-    },
-    tinyLogo: {
-      width: 100,
-      height: 100,
-      resizeMode: 'contain',
-    },
-});
-
   return (
-    <View style={styles.container}>
+    <View style={styles.logincontainer}>
   
       <Image
         style={styles.tinyLogo}
-        source={require('./assets/shield.png')}
+        source={require('../assets/shield.png')}
       />
 
       <Text style={styles.title}>{isLogin ? 'Login' : 'Register'}</Text>

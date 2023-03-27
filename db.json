@@ -9,12 +9,12 @@
       "email": "charlie.malachinski@valpo.edu"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "1",
       "username": "1",
       "password": "1",
       "image": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg",
-      "email": "test.test@valpo.edu"
+      "email": "1"
     }
   ]
 }

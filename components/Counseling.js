@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
-
+import { View, Text, Linking, TouchableOpacity } from 'react-native';
+import styles from './styles.js';
 
 const Counseling = () => {
 
@@ -16,7 +16,6 @@ const Counseling = () => {
         Linking.openURL(`mailto:${recepient}?subject=${subject}&body=${body}`);
     }
 
-
     return (
         <View style={{ flex: 1, backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'center' }}>
           <Text>Contact the Counseling Center</Text>
@@ -29,35 +28,6 @@ const Counseling = () => {
             </TouchableOpacity>
         </View>
         );
-
-
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        maxWidth: '70%',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-      },
-      button: {
-        flex: 1,
-        backgroundColor: '#613318',
-        padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
-        maxWidth: 200,
-        width: 200,
-        height: 45,
-        maxHeight: 45,
-      },
-});
 
 export default Counseling;

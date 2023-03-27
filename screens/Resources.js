@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import ResourceItem from './components/ResourceItem';
-
-
+import React  from 'react';
+import { View, Text } from 'react-native';
+import ResourceItem from '../components/ResourceItem';
 
 function Resources() {
     return (
@@ -11,8 +9,6 @@ function Resources() {
       <ResourceItem></ResourceItem>
     </View>
     );
-
-    
 }
 
 export default Resources;
