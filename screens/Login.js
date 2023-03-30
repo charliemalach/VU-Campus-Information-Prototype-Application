@@ -4,9 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 
-const API_URL = 'https://bd25-152-228-20-39.ngrok.io'; //change this link for the user db 
-const defaultImage = "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg";
+const API_URL = 'https://99e1-152-228-20-39.ngrok.io'; //change this link for the user db 
+const defaultImage = "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg";
 
+let loggedId = 0;
 let loggedName = 'name';
 let loggedUser = 'username';
 let loggedImage = defaultImage;
@@ -32,6 +33,7 @@ const Login = () => {
         loggedUser = user.username;
         loggedImage = defaultImage;
         loggedEmail = user.email;
+        loggedId = user.id;
         // handle successful login, e.g. navigate to home screen
         navigation.navigate('Home', { username: loggedUser });
         
@@ -44,7 +46,7 @@ const Login = () => {
         setIsLogin(true);
         
         StatusBar.setHidden(true);
-        return loggedUser, loggedImage, loggedEmail, loggedName;
+        return loggedUser, loggedImage, loggedEmail, loggedName, loggedId;
       } else {
         console.error("Invalid credentials");
         // handle failed login, e.g. display error message to user
@@ -152,4 +154,5 @@ export {loggedName};
 export {loggedUser};
 export {loggedImage};
 export {loggedEmail};
+export { loggedId };
 export default Login

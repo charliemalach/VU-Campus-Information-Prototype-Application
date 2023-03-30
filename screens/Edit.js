@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { loggedUser } from './Login.js';
 import { loggedName } from './Login.js';
 import { loggedEmail } from './Login.js';
 import { loggedImage } from './Login.js';
+import { loggedId } from './Login.js';
+import { loggedPassword } from './Login.js';
 import { API_URL } from './Login.js';
 import * as FileSystem from 'expo-file-system';
 import styles from './styles';
 
 const EditProfileScreen = () => {
-  const [profilePicture, setProfilePicture] = useState('');
+  const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
@@ -31,27 +33,15 @@ const EditProfileScreen = () => {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-      base64: true,
     });
     console.log(JSON.stringify(result));
-    if (!result.cancelled) {
-      const localUri = await saveLocalImage(result.uri);
-      setProfilePicture(localUri);
-      uploadProfilePicture(loggedUser, result.base64);
+    if (!result.canceled) {
+      const localUri = await saveLocalImage(result.assets[0].uri);
+      setImage(localUri);
+      uploadProfilePicture(localUri);
     }
   };
-
-  const uploadToStorage = async (username, blob) => {
-    const response = await fetch(`${API_URL}/users?username=${username}`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        image: blob,
-      }),
-    });
-    const result = await response.json();
-    return result.url;
-  };
-
+  
   const saveLocalImage = async (uri) => {
     const filename = uri.split('/').pop();
     const directory = FileSystem.documentDirectory + 'images/';
@@ -64,19 +54,22 @@ const EditProfileScreen = () => {
     return localUri;
   };
 
-  const uploadProfilePicture = async (username, imageData) => {
+  const uploadProfilePicture = async ( imageUri ) => {
+    const updateUser = { id: loggedId, name: loggedName, username: loggedUser, password: loggedPassword, image: imageUri, email: loggedEmail };
     try {
-      const blob = await fetch(`data:image/jpeg;base64,${imageData}`).then(res => res.blob());
-      const imageUrl = await uploadToStorage(blob);
-      const response = await fetch(`${API_URL}/users?username=${username}`, {
-        method: 'PATCH',
+      const formData = new FormData();
+      formData.append('image', {
+        uri: imageUri,
+        name: 'image.jpg',
+        type: 'image/jpeg',
+      });
+      const response = await fetch(`${API_URL}/users/${loggedId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          image: imageUrl,
-        })
-      });
+        body: JSON.stringify(updateUser)
+        });
       const result = await response.json();
       console.log(result);
     } catch (error) {
@@ -87,8 +80,8 @@ const EditProfileScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={pickImage}>
-        {profilePicture ? (
-          <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
+        {image ? (
+          <Image source={{ uri: image }} style={styles.profilePicture} />
         ) : (
           <View style={styles.profilePicturePlaceholder}>
             <Image source={{ uri: loggedImage }} style={styles.profilePicture} />

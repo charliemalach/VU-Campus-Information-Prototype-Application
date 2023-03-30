@@ -5,16 +5,31 @@
       "name": "Charlie Malachinski",
       "username": "cmalach1",
       "password": "cmalach1",
-      "image": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg",
+      "image": "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg",
       "email": "charlie.malachinski@valpo.edu"
     },
     {
       "id": 2,
       "name": "1",
       "username": "1",
-      "password": "1",
-      "image": "https://cdn.greatnews.life/wp-content/uploads/images/vu-logo.jpg",
+      "image": "file:///var/mobile/Containers/Data/Application/7346C758-2982-4CD4-AD1F-490A12F5E6B2/Documents/ExponentExperienceData/%2540anonymous%252FValpoApplication-88f328ac-f2fa-4dd1-9d43-76fd52991013/images/9A5A75A7-9D14-4269-B3E9-51910684CBA6.jpg",
       "email": "1"
+    },
+    {
+      "id": 3,
+      "name": "2",
+      "username": "2",
+      "password": "2",
+      "image": "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg",
+      "email": "2"
+    },
+    {
+      "id": 4,
+      "name": "3",
+      "username": "3",
+      "password": "3",
+      "image": "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg",
+      "email": "3"
     }
   ]
 }
