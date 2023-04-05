@@ -11,6 +11,8 @@ import { API_URL } from './Login.js';
 import * as FileSystem from 'expo-file-system';
 import styles from './styles';
 
+let newImage = ""; 
+
 const EditProfileScreen = () => {
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
@@ -39,7 +41,9 @@ const EditProfileScreen = () => {
       const localUri = await saveLocalImage(result.assets[0].uri);
       setImage(localUri);
       uploadProfilePicture(localUri);
+      newImage = localUri;
     }
+    return newImage;
   };
   
   const saveLocalImage = async (uri) => {
@@ -112,4 +116,5 @@ const EditProfileScreen = () => {
   );
 };
 
+export {newImage};
 export default EditProfileScreen;

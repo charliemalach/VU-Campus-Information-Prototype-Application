@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Alert, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import { newImage } from './Edit';
 
 
-const API_URL = 'https://99e1-152-228-20-39.ngrok.io'; //change this link for the user db 
+const API_URL = 'https://c7de-152-228-20-39.ngrok.io'; //change this link for the user db 
 const defaultImage = "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg";
 
 let loggedId = 0;
 let loggedName = 'name';
 let loggedUser = 'username';
-let loggedImage = defaultImage;
+let loggedImage = 'test';
 let loggedEmail = 'email';
+let loggedPassword = 'password';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -31,9 +33,10 @@ const Login = () => {
         console.log("User logged in:", user);
         loggedName = user.name;
         loggedUser = user.username;
-        loggedImage = defaultImage;
+        loggedImage = user.image;
         loggedEmail = user.email;
         loggedId = user.id;
+        loggedPassword = user.password;
         // handle successful login, e.g. navigate to home screen
         navigation.navigate('Home', { username: loggedUser });
         
@@ -41,12 +44,12 @@ const Login = () => {
         setName('');
         setUsername('');
         setPassword('');
-        setImage('');
+        setImage(newImage);
         setEmail('');
         setIsLogin(true);
         
         StatusBar.setHidden(true);
-        return loggedUser, loggedImage, loggedEmail, loggedName, loggedId;
+        return loggedUser, loggedImage, loggedEmail, loggedName, loggedId, loggedPassword;
       } else {
         console.error("Invalid credentials");
         // handle failed login, e.g. display error message to user
@@ -68,7 +71,7 @@ const Login = () => {
         // handle failed registration, e.g. display error message to user
       } else {
         setImage(defaultImage)
-        const newUser = { id: nextId, name, username, password, image, email }; //for some reason messing with the space after email allows post requests ..?
+        const newUser = { id: nextId, name, username, password, image: defaultImage, email }; //for some reason messing with the space after email allows post requests ..?
         const response = await fetch(`${API_URL}/users`, {
           method: 'POST',
           headers: {
@@ -151,8 +154,9 @@ const Login = () => {
 
 export {API_URL};
 export {loggedName};
+export {loggedPassword};
 export {loggedUser};
 export {loggedImage};
 export {loggedEmail};
-export { loggedId };
+export {loggedId};
 export default Login
