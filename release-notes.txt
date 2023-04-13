@@ -1,0 +1,97 @@
+#----------------------------------------------------------------------------------------------------#
+
+VU Campus Information Prototype Application - Version 0.0.4, 04/05/23
+
+New Features: 
+	- Ability to edit current user's profile avatar with 'Edit Profile' page
+
+Known Issues: 
+	- ValpoNav only works when on campus network (server hosting issue)
+
+Expected Next Sprint: 
+    - Fix ValpoNav connectivity issue (not sure if possible)
+
+Links: 
+	- GitHub Repository: https://github.com/charliemalach/VU-Campus-Information-Prototype-Application
+
+#----------------------------------------------------------------------------------------------------#
+
+VU Campus Information Prototype Application - Version 0.0.3, 03/24/23
+
+New Features: 
+	- Ability to edit current user's email, name, and username with 'Edit Profile' page
+	- Ability to connect to ValpoNav for campus navigation 
+    - Ability to edit current user details with 'Edit Profile' page
+
+Known Issues: 
+	- ValpoNav only works when on campus network (server hosting issue)
+    - 'Edit Profile' is not saving user image to local databaes 
+
+Expected Next Sprint: 
+    - Ability to save images to user profile
+
+Links: 
+	- GitHub Repository: https://github.com/charliemalach/VU-Campus-Information-Prototype-Application
+
+#----------------------------------------------------------------------------------------------------#
+
+VU Campus Information Prototype Application - Version 0.0.2, 03/05/23
+
+New Features: 
+	- Ability to contact Campus Resources (Student Senate, Health Center, Counseling) 
+	- User Login and Registration fully functional (including auto-increment user id) (JSON-server)
+    - Ability to edit current user's username with 'Edit Profile' page
+
+Known Issues: 
+	- 'Edit Profile' is not saving user image to local databaes 
+
+Expected Next Sprint: 
+    - Ability to save images to user profile
+    - Ability to use ValpoNav and navigate campus map 
+
+Links: 
+	- GitHub Repository: https://github.com/charliemalach/VU-Campus-Information-Prototype-Application
+
+#----------------------------------------------------------------------------------------------------#
+
+VU Campus Information Prototype Application - Version 0.0.1, 02/27/23
+
+New Features: 
+	- Ability to access Founder's menu 
+	- Ability to contact VUPD 
+
+Known Issues: 
+	- Founder's menu is displayed with my personal website instead of in-application view 
+    - VUPD 'Panic Button' calls my phone number instead of VUPD to prevent false alerts
+    - Local Database does not save the new information
+    - Local Database is not working for accessing user information 
+
+Expected Next Sprint: 
+    - Ability to contact Campus Resources
+
+Links: 
+	- GitHub Repository: https://github.com/charliemalach/VU-Campus-Information-Prototype-Application
+
+#----------------------------------------------------------------------------------------------------#
+
+VU Campus Information Prototype Application - Version 0.0.0, 02/16/23
+
+New Features: 
+	- Created a Login and Register account page
+	- Ability for user to navigate to Home page 
+    - Ability for user to connect to Blackboard
+    - Ability for user to connect to DataVU
+
+Known Issues: 
+	- Local Database does not save the new information
+    - Local Database is not working for accessing user information 
+
+Expected Next Sprint: 
+	- Ability to reach Founder's Menu 
+    - Ability to contact Campus Resources 
+    - Ability to contact VUPD 
+
+Links: 
+	- GitHub Repository: https://github.com/charliemalach/VU-Campus-Information-Prototype-Application
+
+#----------------------------------------------------------------------------------------------------#
