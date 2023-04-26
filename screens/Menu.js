@@ -1,3 +1,9 @@
+/**
+
+Renders the menu screen containing menu items.
+@returns {JSX.Element} The menu screen with menu items.
+*/
+
 import React from 'react';
 import { View, Text } from 'react-native';
 import MenuItem from '../components/MenuItem.js';

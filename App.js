@@ -1,8 +1,11 @@
+/**
+Main application component that uses React Navigation to handle app navigation.
+@return {JSX.Element} The main application component
+*/
+
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-
 import Login from './screens/Login';
 import EditProfileScreen from './screens/Edit';
 import Home from './screens/Home';
@@ -13,8 +16,11 @@ import Counseling from './components/Counseling';
 import HealthCenter from './components/HealthCenter';
 import StudentSenate from './components/StudentSenate';
 
-
 const Stack = createStackNavigator();
+/**
+* Container for the application's navigation. Contains a stack navigator with screens for each
+* component of the application.
+*/
 function App() {
   return (
     <NavigationContainer>

@@ -1,3 +1,17 @@
+/**
+ * EditProfileScreen component allows the user to edit their profile information
+ * and upload a new profile picture. This component imports several modules
+ * and variables from other files to function properly.
+ *
+ * @module EditProfileScreen
+ * @see Login
+ * @requires React
+ * @requires react-native
+ * @requires expo-image-picker
+ * @requires expo-file-system
+ * @requires ./styles
+ */
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
@@ -12,6 +26,15 @@ import * as FileSystem from 'expo-file-system';
 import styles from './styles';
 
 let newImage = ""; 
+
+/**
+ * EditProfileScreen component that displays a form for editing the user's profile
+ * information and uploading a new profile picture.
+ *
+ * @function
+ * @name EditProfileScreen
+ * @returns {JSX.Element} EditProfileScreen component
+ */
 
 const EditProfileScreen = () => {
   const [image, setImage] = useState('');
@@ -29,6 +52,15 @@ const EditProfileScreen = () => {
     })();
   }, []);
 
+    /**
+   * Asynchronous function that launches the device's image library and allows the user to select a new profile picture.
+   *
+   * @async
+   * @function
+   * @name pickImage
+   * @returns {string} The local URI of the newly selected image
+   */
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -45,6 +77,16 @@ const EditProfileScreen = () => {
     }
     return newImage;
   };
+
+  /**
+   * Asynchronous function that saves a selected image to the device's file system.
+   *
+   * @async
+   * @function
+   * @name saveLocalImage
+   * @param {string} uri - The URI of the selected image
+   * @returns {string} The local URI of the saved image
+   */
   
   const saveLocalImage = async (uri) => {
     const filename = uri.split('/').pop();
@@ -57,6 +99,13 @@ const EditProfileScreen = () => {
     });
     return localUri;
   };
+
+  /**
+  Asynchronous function to upload selected image to server and update user's profile picture
+  *
+  @async
+  @param {string} imageUri - local uri of the selected image
+  */
 
   const uploadProfilePicture = async ( imageUri ) => {
     const updateUser = { id: loggedId, name: loggedName, username: loggedUser, password: loggedPassword, image: imageUri, email: loggedEmail };

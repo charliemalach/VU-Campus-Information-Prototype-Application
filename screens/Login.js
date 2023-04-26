@@ -1,3 +1,17 @@
+/**
+
+The Login component provides the functionality for logging in or registering
+new users. The component uses useState hook for handling form inputs, and uses
+useNavigation hook to navigate between screens. The component also has constants
+for the API URL and a default image for new users.
+@module Login
+@requires React
+@requires react-native
+@requires @react-navigation/native
+@requires ./styles
+@requires ./Edit
+*/
+
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Alert, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -5,7 +19,20 @@ import styles from './styles';
 import { newImage } from './Edit';
 
 
+/**
+
+The API_URL constant is used to specify the URL of the user database API.
+@type {string}
+@constant
+*/
 const API_URL = 'https://c7de-152-228-20-39.ngrok.io'; //change this link for the user db 
+
+/**
+
+The defaultImage constant is used to specify the default image for new users.
+@type {string}
+@constant
+*/
 const defaultImage = "https://i.pinimg.com/736x/83/bc/8b/83bc8b88cf6bc4b4e04d153a418cde62.jpg";
 
 let loggedId = 0;
@@ -15,6 +42,13 @@ let loggedImage = 'test';
 let loggedEmail = 'email';
 let loggedPassword = 'password';
 
+/**
+
+The Login component provides the functionality for logging in or registering
+new users.
+@function Login
+@returns {JSX.Element} The Login component's UI.
+*/
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +59,16 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const navigation = useNavigation();
   
+  /**
+  The handleLogin function sends a GET request to the API to check if the user
+  with the entered username and password exists in the database. If the user
+  exists, the function stores the user's information in global variables and
+  navigates to the home screen. If the user does not exist, an error message is
+  displayed.
+  @function handleLogin
+  @async
+  @returns {string} The username of the logged-in user.
+  */
   const handleLogin = async () => {
     try {
       const response = await fetch(`${API_URL}/users?username=${username}&password=${password}`, {method: "GET"});
@@ -61,6 +105,14 @@ const Login = () => {
     return loggedUser;
   };
   
+  /**
+
+  This function handles user registration.
+  It checks if the user already exists, and either displays an error message or registers a new user.
+  @async
+  @function
+  @returns {Promise<void>} - It returns a promise that resolves with no value.
+  */
   const handleRegister = async () => {
     try {
       const response = await fetch(`${API_URL}/users?username=${username}`);

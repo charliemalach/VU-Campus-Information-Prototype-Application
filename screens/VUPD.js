@@ -1,3 +1,9 @@
+/**
+
+Renders the VUPD screen containing VUPD item.
+@returns {JSX.Element} The VUPD screen with VUPD item.
+*/
+
 import React from 'react';
 import { View, Text} from 'react-native';
 import VUPDItem from '../components/VUPDItem';

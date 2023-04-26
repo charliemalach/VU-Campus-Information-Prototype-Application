@@ -1,3 +1,9 @@
+/**
+
+A React component representing the Home screen of the application.
+@returns A view containing a welcome message, the logged user's name displayed as a clickable link to the Edit Profile screen, and a component for displaying ValpoItem.
+*/
+
 import React from 'react';
 import { View, Text } from 'react-native';
 import ValpoItem from '../components/ValpoItem.js';
